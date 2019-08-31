@@ -5,7 +5,7 @@
 # Internet Masterpiece
 
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![dependencies](https://david-dm.org/All-Things-WWW/internet-masterpiece-gatsby)](https://david-dm.org/All-Things-WWW/internet-masterpiece-gatsby)
+[![dependencies](https://david-dm.org/All-Things-WWW/internet-masterpiece-gatsby/status.svg)](https://david-dm.org/All-Things-WWW/internet-masterpiece-gatsby)
 
 An opinionated starter project for creating lightning-fast websites with [Gatsby](https://gatsbyjs.org) v2 and [Netlify CMS](https://netlifycms.org) v2.
 
