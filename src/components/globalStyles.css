@@ -1,5 +1,6 @@
 :root {
-  --primary: #00c2bd;
+  --primary: #c34d60;
+  --primaryHalfTransparent: #c34d6080;
   --secondary: #000;
   --lightGrey: whitesmoke;
   --midGrey: #cacaca;
@@ -23,7 +24,7 @@
 }
 
 ::selection {
-  background: rgba(0, 194, 189, 0.6);
+  background: var(--primaryHalfTransparent);
 }
 
 html {

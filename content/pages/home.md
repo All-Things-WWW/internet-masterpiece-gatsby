@@ -1,16 +1,14 @@
 ---
 template: HomePage
 slug: ''
-title: Yellowcake
-featuredImage: 'https://ucarecdn.com/159203d3-881d-4218-baa1-ca4427b48d0d/'
-subtitle: ' Welcome to the ultimate Gatsby and Netlify starter project.'
+title: Internet Masterpiece
+featuredImage: 'https://upload.wikimedia.org/wikipedia/commons/d/dc/Abstract-art-britto-qb140_%281%29.jpg'
+subtitle: 'A Netlify and Gatsby starter project for All Things WWW'
 meta:
   description: This is a meta description.
   title: The Ultimate Gatsby Starter
 ---
-Yellowcake is an opinionated starter project created by [Thrive Digital](https://thriveweb.com.au/) a [Gold Coast Web Design](https://thriveweb.com.au/) studio. to help you create lightening fast websites with [Gatsby](https://gatsbyjs.org) and [Netlify CMS](https://netlifycms.org).
-
-View the [project overview](https://thriveweb.com.au/the-lab/yellowcake-gatsby-react-js-starter-project/) and the [docs](https://github.com/thriveweb/yellowcake/blob/master/README.md).
+Internet Masterpiece is an opinionated starter project used for [All Things WWW](https://www.allthingswww.com) to help them create lightning fast websites with [Gatsby](https://gatsbyjs.org) and [Netlify CMS](https://netlifycms.org).
 
 # Features
 
@@ -27,4 +25,4 @@ View the [project overview](https://thriveweb.com.au/the-lab/yellowcake-gatsby-r
 
 View the [Netlify CMS Docs](https://www.netlifycms.org/docs/) and the [Netlify CMS Repo](https://github.com/netlify/netlify-cms).
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/thriveweb/yellowcake&stack=cms)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/All-Things-WWW/internet-masterpiece-gatsby.git&stack=cms)

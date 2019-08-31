@@ -2,10 +2,11 @@
   background-color: var(--darkGrey);
   color: white;
   padding: 15rem 0;
+  text-shadow: 2px 2px rgba(0,0,0,.8);
 }
 
 .PageHeader .BackgroundImage {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .PageHeader-large {
@@ -19,7 +20,8 @@
 
 .PageHeader--Subtitle {
   font-weight: 400;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
+  text-shadow: 2px 2px rgba(0,0,0,.8); 
 }
 
 .PageHeader .container {
