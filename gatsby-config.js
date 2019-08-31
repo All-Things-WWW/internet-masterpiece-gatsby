@@ -1,11 +1,18 @@
 const postcssPresetEnv = require('postcss-preset-env')
-
+const path = require('path');
 module.exports = {
   siteMetadata: {
     title: 'Internet Masterpiece',
     siteUrl: 'https://internetmasterpiece.com'
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        'masterpiece-components': path.join(__dirname, 'src/masterpiece-components'),
+        pages: path.join(__dirname, 'src/pages')
+      }
+    },
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-yaml',
     {
