@@ -26,3 +26,9 @@ Internet Masterpiece is an opinionated starter project used for [All Things WWW]
 View the [Netlify CMS Docs](https://www.netlifycms.org/docs/) and the [Netlify CMS Repo](https://github.com/netlify/netlify-cms).
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/All-Things-WWW/internet-masterpiece-gatsby.git&stack=cms)
+
+### Attribution
+
+Special thanks goes out to :
+* ThriveWeb team for putting together a great jumping off point [Yellow Cake](https://github.com/thriveweb/yellowcake)
+* SGalleryBritto for amazing Photo [Abstract Art Britto](https://commons.wikimedia.org/wiki/File:Abstract-art-britto-qb140_(1).jpg) that is on the landing page.  [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0)

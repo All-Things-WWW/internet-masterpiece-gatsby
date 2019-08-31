@@ -140,3 +140,9 @@ https://hooks.zapier.com/hooks/catch/2881617/ea5exg/
 - Give your Zap a name and make sure your zap is turned on
 - Submit your form one last time and see if all data is coming trough to MailChimp
 - Thats is!
+
+### Attribution
+
+Special thanks goes out to :
+* ThriveWeb team for putting together a great jumping off point [Yellow Cake](https://github.com/thriveweb/yellowcake)
+* SGalleryBritto for amazing Photo [Abstract Art Britto](https://commons.wikimedia.org/wiki/File:Abstract-art-britto-qb140_(1).jpg) that is on the landing page.  [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0)
