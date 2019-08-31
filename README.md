@@ -1,6 +1,6 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1ba695a7-65fc-4878-8f6f-528ab6541ce0/deploy-status)](https://app.netlify.com/sites/browntiebrands/deploys) - Production Status
+[![Netlify Status](https://api.netlify.com/api/v1/badges/15c2d680-e0b5-43a6-8819-1a425a3e9e14/deploy-status)](https://www.internetmasterpiece.com) - Production Status
 
-[https://browntiebrands.netlify.com/](https://browntiebrands.netlify.com/)
+[https://www.internetmasterpiece.com/](https://www.internetmasterpiece.com/)
 
 # Internet Masterpiece
 
