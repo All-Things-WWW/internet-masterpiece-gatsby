@@ -1,5 +1,6 @@
 const postcssPresetEnv = require('postcss-preset-env')
 const path = require('path');
+
 module.exports = {
   siteMetadata: {
     title: 'Internet Masterpiece',
