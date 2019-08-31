@@ -76,11 +76,9 @@
 
 .Nav--GroupLinks {
   position: absolute;
-  top: 100%;
   left: 0;
   width: auto;
   background: white;
-  /* opacity: 0; */
   max-height: 0;
   overflow: hidden;
   transition: 0.3s ease all;
