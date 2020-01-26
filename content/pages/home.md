@@ -6,7 +6,7 @@ featuredImage: 'https://upload.wikimedia.org/wikipedia/commons/d/dc/Abstract-art
 subtitle: 'A Netlify and Gatsby starter project for All Things WWW'
 meta:
   description: This is a meta description.
-  title: The Ultimate Gatsby Starter
+  title: An opinonated starter project
 ---
 Internet Masterpiece is an opinionated starter project used for [All Things WWW](https://www.allthingswww.com) to help them create lightning fast websites with [Gatsby](https://gatsbyjs.org) and [Netlify CMS](https://netlifycms.org).
 
