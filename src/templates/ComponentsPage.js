@@ -2,7 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import PageHeader from '../components/PageHeader'
-import Content from '../components/Content.js'
+import Content from '../components/Content'
+import ContentMDX from '../components/ContentMDX'
 import Layout from '../components/Layout.js'
 import Accordion from '../components/Accordion'
 import BackgroundVideo from '../components/BackgroundVideo'
@@ -75,7 +76,7 @@ const ComponentsPage = ({ data: { page } }) => (
     meta={page.frontmatter.meta || false}
     title={page.frontmatter.title || false}
   >
-    <ComponentsPageTemplate {...page} {...page.frontmatter} body={page.html} />
+    <ComponentsPageTemplate {...page} {...page.frontmatter} body={page.body} />
   </Layout>
 )
 
@@ -83,10 +84,10 @@ export default ComponentsPage
 
 export const pageQuery = graphql`
   query ComponentsPage($id: String!) {
-    page: markdownRemark(id: { eq: $id }) {
+    page: mdx(id: { eq: $id }) {
       ...Meta
       ...Gallery
-      html
+      body
       frontmatter {
         title
         template

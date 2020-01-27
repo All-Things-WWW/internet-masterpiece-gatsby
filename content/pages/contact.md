@@ -2,18 +2,18 @@
 template: ContactPage
 slug: contact
 title: Contact Page
-featuredImage: https://ucarecdn.com/e22a858a-b420-47af-99f6-ed54b6860333/
+featuredImage: https://ucarecdn.com/aa4c6f57-7203-4415-b4e6-3810aa3e2307/
 subtitle: This is the contact page subtitle.
-address: '404 James St, Burleigh Heads QLD 4220'
-phone: 0987 123 456
-email: example@example.com
+address: '5151 E Broadway Blvd. Suite 1600'
+phone:  1 520 447 1100
+email: hi@internetmasterpiece.com
 locations:
-  - lat: '-27.9654732'
-    lng: '153.2432449'
+  - lat: '32.222050'
+    lng: '-110.883180'
     mapLink: ''
 meta:
-  description: This is a meta description.
-  title: Contact Page
+  description: An opinonated starter project for All Things WWW
+  title: Contact Page - Internet Masterpiece - A Gatsby Starter
 ---
 
 # Example contact form

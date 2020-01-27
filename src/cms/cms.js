@@ -1,13 +1,21 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from 'react'
-import CMS from 'netlify-cms'
 import './cms-utils'
+import MDX from '@mdx-js/runtime'
+import CMS from 'netlify-cms-app'
+import uploadcare from 'netlify-cms-media-library-uploadcare'
+import ErrorBoundary from 'react-error-boundary'
 
+import components from '../registerMdxComponents'
+
+import { DefaultPageMDXTemplate } from '../templates/DefaultPage'
 import { HomePageTemplate } from '../templates/HomePage'
 import { ComponentsPageTemplate } from '../templates/ComponentsPage'
 import { ContactPageTemplate } from '../templates/ContactPage'
-import { DefaultPageTemplate } from '../templates/DefaultPage'
 import { BlogIndexTemplate } from '../templates/BlogIndex'
 import { SinglePostTemplate } from '../templates/SinglePost'
+
+CMS.registerMediaLibrary(uploadcare)
 
 if (
   window.location.hostname === 'localhost' &&
@@ -20,21 +28,38 @@ if (
   CMS.registerPreviewStyle('/styles.css')
 }
 
-CMS.registerPreviewTemplate('home-page', ({ entry }) => (
-  <HomePageTemplate {...entry.toJS().data} />
-))
-CMS.registerPreviewTemplate('components-page', ({ entry }) => (
-  <ComponentsPageTemplate {...entry.toJS().data} />
-))
-CMS.registerPreviewTemplate('contact-page', ({ entry }) => (
-  <ContactPageTemplate {...entry.toJS().data} />
-))
-CMS.registerPreviewTemplate('infoPages', ({ entry }) => (
-  <DefaultPageTemplate {...entry.toJS().data} />
-))
-CMS.registerPreviewTemplate('blog-page', ({ entry }) => (
-  <BlogIndexTemplate {...entry.toJS().data} />
-))
-CMS.registerPreviewTemplate('posts', ({ entry }) => (
-  <SinglePostTemplate {...entry.toJS().data} />
-))
+const previewTemplateGenerator = () => {
+  return data => {
+    const { entry } = data
+    const { template, body, ...props } = entry.toJS().data
+    const Component = Templates[template] || Templates.default
+    return (
+      <Component {...props} preview>
+        <ErrorBoundary key={body}>
+          <MDX components={components} scope={{}}>
+            {body}
+          </MDX>
+        </ErrorBoundary>
+      </Component>
+    )
+  }
+}
+
+const Templates = {
+  default: DefaultPageMDXTemplate,
+  'home-page': HomePageTemplate,
+  'components-page': ComponentsPageTemplate,
+  'contact-page': ContactPageTemplate,
+  'info-page': DefaultPageTemplate,
+  'blog-page': BlogIndexTemplate,
+  'posts': SinglePostTemplate
+}
+
+Object.keys(Templates).forEach(key =>{
+  CMS.registerPreviewTemplate(key, previewTemplateGenerator())
+})
+
+
+CMS.registerPreviewTemplate('permanent-pages', previewTemplateGenerator())
+CMS.registerPreviewTemplate('optional-pages', previewTemplateGenerator())
+

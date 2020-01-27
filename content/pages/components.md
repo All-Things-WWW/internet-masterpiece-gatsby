@@ -2,7 +2,7 @@
 template: ComponentsPage
 slug: components
 title: Components Page
-featuredImage: 'https://ucarecdn.com/df0dc650-6938-412f-aefb-2019d2349e13/'
+featuredImage: 'https://ucarecdn.com/cfc5f713-8157-46e3-b576-f8eddc53ffa0/'
 subtitle: This is the components page subtitle.
 section1: >-
   ## This is a container component
@@ -47,6 +47,6 @@ gallery:
     image: 'https://ucarecdn.com/83485d70-1552-4c97-b237-22330fb56a1e/'
     title: Yellow Ice Cream
 meta:
-  description: This is a meta description.
-  title: Components Page
+  description: An opinonated starter project for All Things WWW
+  title: Components Page - Internet Masterpiece - A Gatsby Starter
 ---

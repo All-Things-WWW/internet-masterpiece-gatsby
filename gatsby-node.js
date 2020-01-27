@@ -1,24 +1,27 @@
 const _ = require('lodash')
 const path = require('path')
+const fs = require('fs')
+
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+
+const DEFAULT_TEMPLATE = path.resolve(`src/templates/DefaultPageMDX.js`)
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
   return graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allMdx(limit: 1000) {
         edges {
           node {
             id
+            fields {
+              slug
+            }
             frontmatter {
               template
               title
-            }
-            fields {
-              slug
-              contentType
             }
           }
         }
@@ -30,33 +33,35 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    const mdFiles = result.data.allMarkdownRemark.edges
+    // Create MDX pages
+    const mdxFiles = result.data.allMdx.edges
+    // you'll call `createPage` for each result
+    mdxFiles.forEach(({ node }, index) => {
+      const id = node.id
+      const { template} = node.frontmatter
+      const { slug } = node.fields
 
-    const contentTypes = _.groupBy(mdFiles, 'node.fields.contentType')
+      if (template) {
+        const component = function(){
+          const Template_Path = path.resolve(
+            `src/templates/${String(template)}.js`
+          )
 
-    _.each(contentTypes, (pages, contentType) => {
-      const pagesToCreate = pages.filter(page =>
-        // get pages with template field
-        _.get(page, `node.frontmatter.template`)
-      )
-      if (!pagesToCreate.length) return console.log(`Skipping ${contentType}`)
-
-      console.log(`Creating ${pagesToCreate.length} ${contentType}`)
-
-      pagesToCreate.forEach((page, index) => {
-        const id = page.node.id
-        createPage({
-          // page slug set in md frontmatter
-          path: page.node.fields.slug,
-          component: path.resolve(
-            `src/templates/${String(page.node.frontmatter.template)}.js`
-          ),
-          // additional data can be passed via context
-          context: {
-            id
+          if (fs.existsSync(Template_Path)){
+            return Template_Path
           }
+          console.log(`Template ${template} not found at ${Template_Path}`)
+          return DEFAULT_TEMPLATE;
+        }();
+        
+        
+        createPage({
+          path: slug || '/',
+          component,
+
+          context: { id }
         })
-      })
+      }
     })
   })
 }
@@ -70,11 +75,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // Create smart slugs
   // https://github.com/Vagr9K/gatsby-advanced-starter/blob/master/gatsby-node.js
   let slug
-  if (node.internal.type === 'MarkdownRemark') {
+
+  if (node.internal.type === 'MarkdownRemark' || node.internal.type === 'Mdx') {
     const fileNode = getNode(node.parent)
     const parsedFilePath = path.parse(fileNode.relativePath)
 
-    if (_.get(node, 'frontmatter.slug')) {
+    if (_.get(node, 'frontmatter.slug', '').length) {
       slug = `/${node.frontmatter.slug.toLowerCase()}/`
     } else if (
       // home page gets root slug
@@ -91,6 +97,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     } else {
       slug = `/${parsedFilePath.dir}/`
     }
+
+    console.log(slug)
 
     createNodeField({
       node,

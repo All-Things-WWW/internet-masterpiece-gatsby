@@ -2,11 +2,11 @@
 template: HomePage
 slug: ''
 title: Internet Masterpiece
-featuredImage: 'https://upload.wikimedia.org/wikipedia/commons/d/dc/Abstract-art-britto-qb140_%281%29.jpg'
+featuredImage: 'https://ucarecdn.com/71cf5459-57a8-401c-9565-e46f4754ea36/'
 subtitle: 'A Netlify and Gatsby starter project for All Things WWW'
 meta:
-  description: This is a meta description.
-  title: An opinonated starter project
+  description: An opinonated starter project for All Things WWW
+  title: Internet Masterpiece - A Gatsby Starter
 ---
 Internet Masterpiece is an opinionated starter project used for [All Things WWW](https://www.allthingswww.com) to help them create lightning fast websites with [Gatsby](https://gatsbyjs.org) and [Netlify CMS](https://netlifycms.org).
 
@@ -15,6 +15,7 @@ Internet Masterpiece is an opinionated starter project used for [All Things WWW]
 * **[Gatsby](https://gatsbyjs.org)** static site generator
 * **[Netlify CMS](https://github.com/netlify/netlify-cms)** for content management
 * Dynamic menus and forms
+* Dynamic Markdown to Component Conversion [Check out the Blog](/blog/)
 * **[Mailchimp](http://mailchimp.com)** and **[Uploadcare](https://uploadcare.com)** integrations
 * Fully responsive layout for mobile and widescreen browsing
 * Blog searching and paging functionality

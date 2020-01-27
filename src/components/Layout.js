@@ -22,17 +22,19 @@ export default ({ children, meta, title }) => {
               image
             }
           }
-          allPosts: allMarkdownRemark(
-            filter: { fields: { contentType: { eq: "postCategories" } } }
-            sort: { order: DESC, fields: [frontmatter___date] }
+          allPosts: allMdx(
+            filter: { 
+              frontmatter: {
+                status: { eq: "published" }
+               }
+            }
+            sort: { order: DESC, fields: [frontmatter___date] } 
           ) {
             edges {
               node {
-                fields {
-                  slug
-                }
                 frontmatter {
                   title
+                  slug
                 }
               }
             }
@@ -45,7 +47,7 @@ export default ({ children, meta, title }) => {
           subNav = {
             posts: data.allPosts.hasOwnProperty('edges')
               ? data.allPosts.edges.map(post => {
-                  return { ...post.node.fields, ...post.node.frontmatter }
+                  return { ...post.node.frontmatter }
                 })
               : false
           }

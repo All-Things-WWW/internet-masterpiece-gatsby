@@ -2,11 +2,11 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import PageHeader from '../components/PageHeader'
-import Content from '../components/Content'
+import ContentMDX from '../components/ContentMDX'
 import Layout from '../components/Layout'
 
 // Export Template for use in CMS preview
-export const HomePageTemplate = ({ title, subtitle, featuredImage, body }) => (
+export const HomePageTemplate = ({ title, subtitle, featuredImage, body, children }) => (
   <main className="Home">
     <PageHeader
       large
@@ -17,7 +17,7 @@ export const HomePageTemplate = ({ title, subtitle, featuredImage, body }) => (
 
     <section className="section">
       <div className="container">
-        <Content source={body} />
+        {children|| <ContentMDX source={body} />}
       </div>
     </section>
   </main>
@@ -26,7 +26,7 @@ export const HomePageTemplate = ({ title, subtitle, featuredImage, body }) => (
 // Export Default HomePage for front-end
 const HomePage = ({ data: { page } }) => (
   <Layout meta={page.frontmatter.meta || false}>
-    <HomePageTemplate {...page} {...page.frontmatter} body={page.html} />
+    <HomePageTemplate {...page} {...page.frontmatter} body={page.body} />
   </Layout>
 )
 
@@ -38,9 +38,9 @@ export const pageQuery = graphql`
   ## $id is processed via gatsby-node.js
   ## query name must be unique to this file
   query HomePage($id: String!) {
-    page: markdownRemark(id: { eq: $id }) {
+    page: mdx(id: { eq: $id }) {
       ...Meta
-      html
+      body
       frontmatter {
         title
         subtitle

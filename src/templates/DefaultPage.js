@@ -1,17 +1,19 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import styled from 'styled-components';
 
 import PageHeader from '../components/PageHeader'
-import Content from '../components/Content'
+import ContentMDX from '../components/ContentMDX'
 import Layout from '../components/Layout'
 import SVGIcon from '../components/SVGIcon'
 
 // Export Template for use in CMS preview
-export const DefaultPageTemplate = ({
+export const DefaultPageMDXTemplate = ({
   title,
   subtitle,
   featuredImage,
-  body
+  body,
+  children
 }) => (
   <main className="DefaultPage">
     <PageHeader
@@ -22,28 +24,35 @@ export const DefaultPageTemplate = ({
 
     <section className="section">
       <div className="container">
-        <Content source={body} />
+      {children || <ContentMDX source={body} />}
         <SVGIcon src="/images/calendar.svg" />
       </div>
     </section>
   </main>
 )
 
-const DefaultPage = ({ data: { page } }) => (
+const DefaultPage = (props) => (
   <Layout
-    meta={page.frontmatter.meta || false}
-    title={page.frontmatter.title || false}
+    meta={props.meta || false}
+    title={props.title || false}
   >
-    <DefaultPageTemplate {...page.frontmatter} body={page.html} />
+    <DefaultPageMDXTemplate {...props} body={props.body} />
   </Layout>
 )
-export default DefaultPage
+
+
+
+const DefaultPageMDX = ({ data: { page } }) => {
+  return <DefaultPage {...page.frontmatter} body={page.body} />
+}
+
+
+export default DefaultPageMDX
 
 export const pageQuery = graphql`
-  query DefaultPage($id: String!) {
-    page: markdownRemark(id: { eq: $id }) {
-      ...Meta
-      html
+  query DefaultPageMDX($id: String!) {
+    page: mdx(id: { eq: $id }) {
+      body
       frontmatter {
         title
         subtitle

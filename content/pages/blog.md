@@ -2,9 +2,9 @@
 template: BlogIndex
 slug: blog
 title: Blog Page
-featuredImage: 'https://ucarecdn.com/b6254577-26bf-4b79-aa9b-f3793e2aebdc/'
+featuredImage: 'https://ucarecdn.com/775a41b9-8bca-4104-bed8-909784488576/'
 subtitle: This is the blog page subtitle.
 meta:
-  description: This is a meta description.
-  title: Blog Page
+  description: An opinonated starter project for All Things WWW
+  title: Blog Page - Internet Masterpiece - A Gatsby Starter
 ---

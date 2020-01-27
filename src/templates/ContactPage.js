@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 
 import PageHeader from '../components/PageHeader'
 import FormSimpleAjax from '../components/FormSimpleAjax'
-import Content from '../components/Content'
+import ContentMDX from '../components/ContentMDX'
 import GoogleMap from '../components/GoogleMap'
 import Layout from '../components/Layout'
 import './ContactPage.css'
@@ -18,7 +18,8 @@ export const ContactPageTemplate = ({
   address,
   phone,
   email,
-  locations
+  locations,
+  children
 }) => (
   <main className="Contact">
     <PageHeader
@@ -29,7 +30,7 @@ export const ContactPageTemplate = ({
     <section className="section Contact--Section1">
       <div className="container Contact--Section1--Container">
         <div>
-          <Content source={body} />
+        {children || <ContentMDX source={body} />}
           <div className="Contact--Details">
             {address && (
               <a
@@ -71,7 +72,7 @@ const ContactPage = ({ data: { page } }) => (
     meta={page.frontmatter.meta || false}
     title={page.frontmatter.title || false}
   >
-    <ContactPageTemplate {...page.frontmatter} body={page.html} />
+    <ContactPageTemplate {...page.frontmatter} body={page.body} />
   </Layout>
 )
 
@@ -79,9 +80,9 @@ export default ContactPage
 
 export const pageQuery = graphql`
   query ContactPage($id: String!) {
-    page: markdownRemark(id: { eq: $id }) {
+    page: mdx(id: { eq: $id }) {
       ...Meta
-      html
+      body
       frontmatter {
         title
         template

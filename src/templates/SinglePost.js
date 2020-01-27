@@ -4,7 +4,7 @@ import _format from 'date-fns/format'
 import { Link, graphql } from 'gatsby'
 import { ChevronLeft } from 'react-feather'
 
-import Content from '../components/Content'
+import ContentMDX from '../components/ContentMDX'
 import Layout from '../components/Layout'
 import './SinglePost.css'
 
@@ -61,7 +61,7 @@ export const SinglePostTemplate = ({
           )}
 
           <div className="SinglePost--InnerContent">
-            <Content source={body} />
+            <ContentMDX source={body} />
           </div>
 
           <div className="SinglePost--Pagination">
@@ -99,7 +99,7 @@ const SinglePost = ({ data: { post, allPosts } }) => {
       <SinglePostTemplate
         {...post}
         {...post.frontmatter}
-        body={post.html}
+        body={post.body}
         nextPostURL={_get(thisEdge, 'next.fields.slug')}
         prevPostURL={_get(thisEdge, 'previous.fields.slug')}
       />
@@ -115,9 +115,9 @@ export const pageQuery = graphql`
   ## $id is processed via gatsby-node.js
   ## query name must be unique to this file
   query SinglePost($id: String!) {
-    post: markdownRemark(id: { eq: $id }) {
+    post: mdx(id: { eq: $id }) {
       ...Meta
-      html
+      body
       id
       frontmatter {
         title
@@ -130,7 +130,7 @@ export const pageQuery = graphql`
       }
     }
 
-    allPosts: allMarkdownRemark(
+    allPosts: allMdx(
       filter: { fields: { contentType: { eq: "posts" } } }
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {
@@ -150,7 +150,10 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          frontmatter {
+        fields{
+          slug
+        }
+        frontmatter {
             title
           }
         }
