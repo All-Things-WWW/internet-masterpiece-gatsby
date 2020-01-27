@@ -9,7 +9,7 @@ export default () => (
         <span>&bull;</span>
         <span> All rights reserved.</span>
         <span>&bull;</span>
-        <a href="https://allthingswww.com"> All Things WWW</a>
+        <a href="https://www.allthingswww.com"> All Things WWW</a>
       </div>
     </footer>
   </div>
